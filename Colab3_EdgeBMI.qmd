@@ -1,0 +1,76 @@
+---
+title: "Lab Stage 3: Moving Research Workflows from Cloud to Edge Devices"
+subtitle: "Adapting Workflows for Low-Cost, Resource-Constrained Hardware"
+format: html
+---
+
+## Stage Overview
+
+In this lab, participants adapt a research workflow to run on a small, low-cost edge device — the BBC micro:bit microcontroller. Unlike cloud computing, which provides nearly unlimited resources, edge devices have strict memory and processing limits. You will learn how to simplify and optimize a scientific analysis so that it can operate under these real-world hardware constraints while still producing meaningful results.
+
+This lab illustrates an increasingly important skill in modern research: deploying data analysis workflows directly onto the devices that collect the data, such as wearables, sensors, and portable health monitors.
+
+***
+
+## Master Instructional Resources
+
+To support your work through this lab session, use the following core presentation and live workspace assets:
+
+* **Lecture Presentation Material:** [Download Presentation Slides (PPTX)](assets/Colab3_EdgeBMI.pptx)
+* **Interactive Workspace Notebook:** [Launch Student Workspace on Google Colab](https://colab.research.google.com/github/cyneuro/CI-Workshop-Colabs/blob/main/Colab3_EdgeBMI_STUDENT.ipynb){target="_top"}
+
+***
+
+## Alignment with Pre-Workshop Preparation
+
+Operating within strict memory and processing limits means applying concepts from across your preparation notebooks:
+
+* **Prerequisite Mapping:** The rolling memory window concept, signal cleaning techniques, and end-to-end workflow integration practiced in **Preparation Notebooks 1, 3, and 5** are directly applied here to run a complete analysis within a tiny hardware memory footprint.
+
+***
+
+## How Data Moves Through the Edge Device Workflow
+
+On an edge device, data must be processed one sample at a time as it arrives from the sensor, rather than loading a full dataset into memory at once:
+
+```{mermaid}
+%%| fig-align: center
+graph LR
+    A("1. Obtaining Data\nSample-by-Sample") -->|Rolling Signal Window| B("2. Analyzing Data\nWithin 128KB Memory")
+    B -->|Decoded Output| C("3. Visualizing Results\nLED Matrix Display")
+    C -->|Resource Audit| D("4. Documenting Research\nDevice Performance Log")
+```
+
+***
+
+## Cloud vs. Edge: What Changes and Why
+
+| | Cloud Workflow (Labs 1 & 2) | Edge Device Workflow (Lab 3) |
+|---|---|---|
+| **Memory available** | Gigabytes | 128 kilobytes |
+| **Data handling** | Full dataset loaded at once | One sample at a time |
+| **Analysis tools** | Full scientific libraries | Basic arithmetic only |
+| **Visualization** | Interactive dashboard | 5×5 LED matrix display |
+| **Documentation** | Detailed log file | Compact performance log |
+
+***
+
+## The Four Stages on an Edge Device
+
+### Stage 1 — Obtaining Data
+Rather than downloading a file from a cloud archive, the edge device receives data one sample at a time from its sensor input. A rolling window of recent samples is maintained in memory, and older samples are replaced as new ones arrive — keeping memory use constant regardless of how long the device runs.
+
+### Stage 2 — Analyzing Data
+With no access to scientific computing libraries, analysis must be performed using basic integer arithmetic. The workflow applies a simplified version of the signal decoding approach from Labs 1 and 2 — producing the same type of result using methods that fit within the device's strict memory limits.
+
+### Stage 3 — Visualizing Results
+Instead of a screen-based dashboard, results are displayed on the BBC micro:bit's built-in 5×5 LED matrix. The decoded output is mapped to a grid position on the display, giving real-time visual feedback directly on the device.
+
+### Stage 4 — Documenting Research
+The device generates a compact performance log that records memory usage, analysis settings, and key results — documenting that the workflow operated correctly within the hardware constraints.
+
+***
+
+## Laboratory Playground
+
+The **Laboratory Playground** in this lab lets you adjust a calibration setting on the edge device and observe how it affects the decoded output displayed on the LED matrix. You will explore the boundary between settings that produce stable, accurate outputs and settings that cause the display to behave incorrectly — directly experiencing how hardware limitations interact with analysis design.

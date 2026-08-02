@@ -1,0 +1,81 @@
+---
+title: "Lab Stage 2: Analyzing Larger Datasets Efficiently"
+subtitle: "Scaling Research Workflows to Groups Using Cloud Resources"
+format: html
+---
+
+## Stage Overview
+
+In this lab, participants extend their research workflow to handle larger datasets and explore how cloud computing resources can accelerate scientific analyses. You will scale up your Day 1 workflow to process a group of 50 participants simultaneously, investigate how changes in analysis settings influence results across the group, and learn how larger studies can be processed more efficiently using multiple processors.
+
+No prior experience with cloud computing is required. You will continue to act as a **Workflow Designer**, using AI-assisted tools to adapt and expand your workflow.
+
+***
+
+## Master Instructional Resources
+
+To support your work through this lab session, use the following core presentation and live workspace assets:
+
+* **Lecture Presentation Material:** [Download Presentation Slides (PPTX)](assets/Colab2_CloudScaling.pptx)
+* **Interactive Workspace Notebook:** [Launch Student Workspace on Google Colab](https://colab.research.google.com/github/cyneuro/CI-Workshop-Colabs/blob/main/Colab2_WorkshopSTUDENT.ipynb){target="_top"}
+
+***
+
+## Alignment with Pre-Workshop Preparation
+
+Scaling your workflow effectively builds on what you practiced in the preparation notebooks:
+
+* **Prerequisite Mapping:** The concepts of simultaneous processing, efficient data formats, and reliable data downloading from **Preparation Notebooks 2 and 4** provide the foundational principles used here to distribute analysis across multiple processors safely.
+
+***
+
+## How Data Moves Through the Scaled Workflow
+
+When processing a group of participants, the workflow distributes analysis tasks across multiple processors simultaneously:
+
+```{mermaid}
+%%| fig-align: center
+graph LR
+    A("50-Participant\nGroup Dataset") -->|Parallel Processing| B("Cloud Resource\nAllocator")
+    B --> C("1. Obtaining Data")
+    C -->|Per Processor| D("2. Analyzing Data")
+    D --> E("3. Visualizing Results")
+    E --> F("4. Documenting Research")
+```
+
+***
+
+## What Changes When You Scale Up?
+
+Moving from a single participant to a group introduces new challenges and opportunities. This lab explores three key questions:
+
+**How does dataset size affect analysis time?**
+When working with 50 participants instead of one, processing time increases — but cloud computing resources can run multiple analyses at the same time, significantly reducing the total time required.
+
+**How do analysis settings affect group-level results?**
+Small changes in how you configure your analysis can have larger effects when applied across a whole group. The Laboratory Playground lets you explore this directly.
+
+**How do you document a group-level workflow?**
+Each participant's analysis generates its own documentation file. The workflow collects these into a group-level reproducibility record that shows exactly how the entire study was processed.
+
+***
+
+## The Four Stages at Group Scale
+
+### Stage 1 — Obtaining Data
+Load brain and behavioral research data for a group of 50 participants from a cloud-accessible archive. The workflow verifies that each participant's data is complete and ready for analysis.
+
+### Stage 2 — Analyzing Data
+Apply the same signal processing approach from Lab Stage 1, now distributed across multiple processors so that all 50 participants are analyzed simultaneously.
+
+### Stage 3 — Visualizing Results
+Generate summary visualizations that show results across the full group — not just a single participant — making it possible to identify patterns and variation in the data.
+
+### Stage 4 — Documenting Research
+Produce a group-level reproducibility record that captures analysis settings, computing resources used, and results for every participant in the study.
+
+***
+
+## Laboratory Playground
+
+The **Laboratory Playground** in this lab lets you intentionally introduce changes to analysis settings and observe how those changes affect results across the group. You will also explore how the workflow responds when something unexpected happens — such as a participant's data file being incomplete — and see how the workflow handles this without stopping the entire analysis.
